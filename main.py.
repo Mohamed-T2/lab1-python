@@ -1,0 +1,33 @@
+from functions import (
+    sum_digits,
+    average,
+    normalize_text,
+    select_numbers,
+    is_palindrome,
+)
+
+
+def main():
+    number = int(input("Введите целое число: "))
+    print("Сумма цифр:", sum_digits(number))
+
+    raw_numbers = input("Введите числа через пробел: ")
+    numbers = [int(item) for item in raw_numbers.split()]
+
+    result = average(numbers)
+
+    if result is None:
+        print("Нет данных")
+    else:
+        print("Среднее значение:", result)
+
+    text = input("Введите текст: ")
+    print("Нормализованный текст:", normalize_text(text))
+    print("Является палиндромом:", is_palindrome(text))
+
+    threshold = int(input("Введите порог: "))
+    print("Выбранные числа:", select_numbers(numbers, threshold))
+
+
+if _name_ == "_main_":
+    main()
