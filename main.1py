@@ -1,0 +1,62 @@
+from pathlib import Path
+
+from files_lab import read_matrix
+from table import row_sums, column_sums
+
+
+def read_positive_integer():
+    """Запрашивает положительное целое число."""
+    while True:
+        value = input("Введите положительное целое число: ")
+
+        try:
+            number = int(value)
+        except ValueError:
+            print("Ошибка: введено не целое число.")
+            continue
+
+        if number <= 0:
+            print("Ошибка: число должно быть больше нуля.")
+            continue
+
+        return number
+
+
+def selected_sum(matrix):
+    """Вариант 9: сумма элементов последней строки."""
+    return sum(matrix[-1])
+
+
+def main():
+    folder = Path(_file_).resolve().parent
+    source = folder / "matrix.txt"
+    report = folder / "report.txt"
+
+    try:
+        matrix = read_matrix(source)
+
+        rows = row_sums(matrix)
+        columns = column_sums(matrix)
+        result = selected_sum(matrix)
+
+        report_text = (
+            f"Суммы строк: {' '.join(map(str, rows))}\n"
+            f"Суммы столбцов: {' '.join(map(str, columns))}\n"
+            f"Результат варианта: {result}\n"
+        )
+
+        report.write_text(report_text, encoding="utf-8")
+        print("Отчёт успешно создан.")
+
+    except FileNotFoundError:
+        print("Ошибка: входной файл не найден.")
+    except UnicodeError:
+        print("Ошибка: неправильная кодировка файла.")
+    except ValueError as error:
+        print(f"Ошибка формата данных: {error}")
+    except OSError as error:
+        print(f"Ошибка работы с файлом: {error}")
+
+
+if _name_ == "_main_":
+    main()
