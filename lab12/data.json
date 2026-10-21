@@ -1,0 +1,6 @@
+[
+  {"id": 1, "title": "Сумма чисел", "category": "циклы", "amount": 3, "completed": true},
+  {"id": 2, "title": "Палиндром", "category": "строки", "amount": 2, "completed": false},
+  {"id": 3, "title": "Поиск максимума", "category": "циклы", "amount": 5, "completed": true},
+  {"id": 4, "title": "Анаграммы", "category": "строки", "amount": 4, "completed": false}
+]
